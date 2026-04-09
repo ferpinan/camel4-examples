@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: cameltutorial
+email:
+  host: localhost
+  port: 1025
+  from: no-reply@ferpinan.eus

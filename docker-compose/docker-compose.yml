@@ -1,0 +1,24 @@
+services:
+  # Servidor SFTP (FTP Seguro) - Ideal para Camel 4
+  # Basado en OpenSSH, muy estable para pruebas.
+  sftp:
+    image: atmoz/sftp
+    ports:
+      - "2222:22"
+    # Formato: usuario:password:UID:GID:directorio
+    command: user:pass:::upload
+    volumes:
+      - ./sftp_data:/home/user/upload
+
+  # API REST para Pruebas (HttpBin)
+  # Endpoint para POST: http://localhost:8080/post
+  # Devuelve un JSON con los headers y el body que le envíes.
+  httpbin:
+    image: kennethreitz/httpbin
+    ports:
+      - "7070:80"
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025" # Puerto SMTP
+      - "8025:8025" # Interfaz Web
